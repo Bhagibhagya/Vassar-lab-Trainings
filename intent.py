@@ -1,7 +1,10 @@
 import openai
+import os
+
 
 # OpenAI API Key
-openai.api_key = 'sk-proj-sZ4jvU9B9BAAV6soS9nVT3BlbkFJzNUwDWv4GTWrsWqryxiX'  # Replace with your OpenAI API key
+openai.api_key = os.getenv('OPENAI_API_KEY')
+ # Replace with your OpenAI API key
 
 # Define the few-shot prompt for intent classification
 FEW_SHOT_PROMPT = """
