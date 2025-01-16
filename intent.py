@@ -1,10 +1,8 @@
 import openai
 import os
 
-
 # OpenAI API Key
-openai.api_key = os.getenv('OPENAI_API_KEY')
- # Replace with your OpenAI API key
+openai.api_key = os.getenv('OPENAI_API_KEY')  # Ensure your API key is set as an environment variable
 
 # Define the few-shot prompt for intent classification
 FEW_SHOT_PROMPT = """
@@ -33,19 +31,16 @@ def classify_intent(user_query):
     prompt = FEW_SHOT_PROMPT.format(query=user_query)
 
     try:
-        # Use the correct chat completion endpoint
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # You can also use "gpt-4" for GPT-4
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt},
-            ],
+        # Use the correct completion endpoint
+        response = openai.Completion.create(
+            model="text-davinci-003",  # Use the appropriate model, "text-davinci-003" is an excellent choice for completions
+            prompt=prompt,
             max_tokens=50,
             temperature=0.7
         )
 
         # Extract the classification result from the response
-        intent = response['choices'][0]['message']['content'].strip()
+        intent = response.choices[0].text.strip()
         return intent
     except Exception as e:
         return f"Error: {e}"
