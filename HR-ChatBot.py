@@ -24,7 +24,7 @@ llm = ChatGroq(groq_api_key=os.getenv("GROQ_API_KEY"), model_name="llama3-8b-819
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 # File Paths
-PDF_PATH = "HR-Handbook.pdf"
+PDF_PATH = "HR+Hand+book.pdf"
 CHROMA_DB_PATH = "./chroma_db"
 
 # Prompts
