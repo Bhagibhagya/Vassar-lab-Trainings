@@ -19,7 +19,6 @@ load_dotenv()
 # API Keys
 os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
 os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
-
 llm = ChatGroq(groq_api_key=os.getenv("GROQ_API_KEY"), model_name="llama3-8b-8192")
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
