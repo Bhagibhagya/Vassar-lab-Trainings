@@ -19,11 +19,19 @@ load_dotenv()
 # API Keys
 os.environ["HF_TOKEN"] = os.getenv("HF_TOKEN")
 os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
+<<<<<<< HEAD
+=======
+
+>>>>>>> e927348dffe8d5e0652ed1bf11c3588bd1af679a
 llm = ChatGroq(groq_api_key=os.getenv("GROQ_API_KEY"), model_name="llama3-8b-8192")
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 # File Paths
+<<<<<<< HEAD
 PDF_PATH = "HR+Hand+book.pdf"
+=======
+PDF_PATH = "HR-Handbook.pdf"
+>>>>>>> e927348dffe8d5e0652ed1bf11c3588bd1af679a
 CHROMA_DB_PATH = "./chroma_db"
 
 # Prompts

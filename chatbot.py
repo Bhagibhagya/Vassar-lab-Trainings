@@ -32,7 +32,10 @@ system_prompt = (
     "You are an AI assistant specialized in answering questions about HR policies. "
     "Provide clear, concise answers based on the provided context. "
     "If the information is not available, respond with: 'I'm sorry, I don't have that information right now.'"
+<<<<<<< HEAD
     "Give me intent class"
+=======
+>>>>>>> e927348dffe8d5e0652ed1bf11c3588bd1af679a
     "Context:\n{context}\n\n"
 )
 
