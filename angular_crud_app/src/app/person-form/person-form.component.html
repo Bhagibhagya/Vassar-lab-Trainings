@@ -1,0 +1,43 @@
+<form (ngSubmit)="onSubmit()" #personForm="ngForm">
+    <div>
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="person.name"
+        name="name"
+        required
+        #name="ngModel"
+      />
+      <div *ngIf="name.invalid && name.touched">Name is required</div>
+    </div>
+  
+    <div>
+      <label for="age">Age:</label>
+      <input
+        type="number"
+        id="age"
+        [(ngModel)]="person.age"
+        name="age"
+        required
+        #age="ngModel"
+      />
+      <div *ngIf="age.invalid && age.touched">Age is required</div>
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="person.email"
+        name="email"
+        required
+        #email="ngModel"
+      />
+      <div *ngIf="email.invalid && email.touched">Email is required</div>
+    </div>
+  
+    <button type="submit" [disabled]="personForm.invalid">Add Person</button>
+  </form>
+  

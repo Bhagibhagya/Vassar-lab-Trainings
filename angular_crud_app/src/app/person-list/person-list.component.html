@@ -1,0 +1,9 @@
+<ul>
+    <li *ngFor="let person of people">
+      {{ person.name }} ({{ person.age }}) - {{ person.email }}
+      <button (click)="deletePerson(person.id)">Delete</button>
+      <a [routerLink]="['/edit-person', person.id]">Edit</a>
+    </li>
+  </ul>
+  <a [routerLink]="'/add-person'">Add Person</a>
+  
