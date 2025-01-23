@@ -1,0 +1,12 @@
+class ErrorMessages:
+    DATABASE_OPERATION_FAILED="Database operation failed"
+    INTEGRITY_ERROR = "Integrity error: a violation occurred."
+    OPERATIONAL_ERROR = "Operational error: an issue occurred while accessing the database."
+    DATA_ERROR = "Data error: invalid data provided."
+    PROGRAMMING_ERROR = "Programming error: a SQL syntax error occurred."
+    TRANSACTION_MANAGEMENT_ERROR = "Transaction management error: issues managing transactions."
+    BAD_REQUEST="Bad request"
+    PAGE_EMPTY = "Requested page is empty"
+    IO_ERROR = "An IO error occurred."
+    DATABASE_ERROR = "Database error occurred"
+    CONNECTION_ERROR = "Unable to connect to the service. Please check your connection and try again."

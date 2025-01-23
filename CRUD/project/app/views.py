@@ -4,6 +4,65 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Product
 from .serializers import ProductSerializer
+from .models import NewProduct  # Import the new product model
+from .serializers import NewProductSerializer  # Import the new serializer
+
+# Create a new product
+@api_view(['POST'])
+def create_new_product(request):
+    if request.method == 'POST':
+        serializer = NewProductSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Get all products
+@api_view(['GET'])
+def get_new_products(request):
+    if request.method == 'GET':
+        products = NewProduct.objects.all()
+        serializer = NewProductSerializer(products, many=True)
+        return Response(serializer.data)
+
+# Get a single product by ID
+@api_view(['GET'])
+def get_new_product(request, pk):
+    try:
+        product = NewProduct.objects.get(pk=pk)
+    except NewProduct.DoesNotExist:
+        return Response({"error": "Product not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = NewProductSerializer(product)
+        return Response(serializer.data)
+
+# Update a product by ID
+@api_view(['PUT'])
+def update_new_product(request, pk):
+    try:
+        product = NewProduct.objects.get(pk=pk)
+    except NewProduct.DoesNotExist:
+        return Response({"error": "Product not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'PUT':
+        serializer = NewProductSerializer(product, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+# Delete a product by ID
+@api_view(['DELETE'])
+def delete_new_product(request, pk):
+    try:
+        product = NewProduct.objects.get(pk=pk)
+    except NewProduct.DoesNotExist:
+        return Response({"error": "Product not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'DELETE':
+        product.delete()
+        return Response({"message": "Product deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['POST'])
 def create_product(request):
